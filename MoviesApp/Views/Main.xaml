@@ -1,12 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MoviesApp.Views.Main">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:MoviesApp.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Class="MoviesApp.Views.Main"
+             x:Name="this"
+             >
+   
+    <NavigationPage.TitleView>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="MOVIES" TextColor="White" 
+                   HorizontalOptions="FillAndExpand"
+                   />
+                <Label Text="➕" 
+                   TextColor="White"
+                   Margin="0,0,15,0"
+                   >
+                    <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding cmdAddMovie}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </NavigationPage.TitleView>
+
+        <ContentPage.Content>
+            <Grid RowDefinitions="*" ColumnDefinitions="*">
+                <CollectionView ItemsSource="{Binding Movies}" 
+                            BackgroundColor="White"
+                            Margin="5,5"
+                            >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Movie">
+                            <Grid RowDefinitions="160,auto" ColumnDefinitions="110., *"  BackgroundColor="WhiteSmoke">
+                            <Image Source="{Binding Coverpage}"
+                                   Grid.Row="0" 
+                                    Grid.RowSpan="2" Grid.Column="0"
+                                   HeightRequest="70"
+                                   WidthRequest="70"
+                                   Aspect="AspectFit"
+                                   Margin="5,0,0,0"
+                                   />
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                    
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Grid.Row="0" Grid.Column="1"  Text="Title: &#10;" FontAttributes="Bold"/>
+                                                <Span Grid.Row="0" Grid.Column="1"  Text="{Binding Title}"/>
+                                                <Span Grid.Row="1" Grid.Column="2" Text="&#10;Synopsis: &#10;" FontAttributes="Bold"/>
+                                                <Span Grid.Row="1" Grid.Column="2" Text="{Binding Synopsis}" FontSize="Micro" />
+                                                <Span Grid.Row="1" Grid.Column="2" Text="&#10;"/>
+                                                <Span Grid.Row="2" Grid.Column="3" Text="Producer: &#10;" FontAttributes="Bold"/>
+                                                <Span Grid.Row="2" Grid.Column="3" Text="{Binding Producer.Name}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="M" HorizontalOptions="EndAndExpand" Margin="0,0,15,0">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.cmdModifyMovie, Source={x:Reference this}}"
+                                                              CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,8 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MoviesApp.Models
@@ -10,6 +12,8 @@ namespace MoviesApp.Models
     {
         [PrimaryKey, AutoIncrement ]
         public int Id { get; set; }
+        public string Logo { get; set; }
         public string Name { get; set; }
+
     }
 }

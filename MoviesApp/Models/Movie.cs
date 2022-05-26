@@ -1,6 +1,8 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MoviesApp.Models
@@ -13,7 +15,11 @@ namespace MoviesApp.Models
         public string Coverpage { get; set; }
         public string Title { get; set; }
         public string Synopsis { get; set; }
-        public string ReleaseDate { get; set; }
-        public string Producer { get; set; }
+
+        [ForeignKey(typeof(Producer))]
+        public int FKProducerId { get; set; }
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public Producer Producer { get; set; }
+
     }
 }

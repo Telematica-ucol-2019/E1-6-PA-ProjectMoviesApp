@@ -1,4 +1,5 @@
-﻿using MoviesApp.ViewModel;
+﻿using MoviesApp.Models;
+using MoviesApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace MoviesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Main : ContentPage
+    public partial class MaintMovie : ContentPage
     {
-        MainViewModel vm = new MainViewModel();
-        public Main()
+        public MaintMovie(Movie movie)
         {
             InitializeComponent();
-            BindingContext = vm;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            vm.GetAll();
+            BindingContext = new MaintMovieViewModel(movie);
         }
     }
 }
