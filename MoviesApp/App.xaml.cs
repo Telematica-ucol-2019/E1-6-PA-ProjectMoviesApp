@@ -38,6 +38,33 @@ namespace MoviesApp
         }
 
 
+        private static ActorRepository _actorDB;
+        public static ActorRepository ActorDB
+        {
+            get
+            {
+                if (_actorDB == null)
+                {
+                    _actorDB = new ActorRepository();
+                }
+                return _actorDB;
+            }
+        }
+
+        private static MovieActorRepository _movieActorDB;
+        public static MovieActorRepository MovieActorDB
+        {
+            get
+            {
+                if (_movieActorDB == null)
+                {
+                    _movieActorDB = new MovieActorRepository();
+                }
+                return _movieActorDB;
+            }
+        }
+
+
 
         #endregion
 
@@ -47,6 +74,8 @@ namespace MoviesApp
 
             ProducerDB.Init();
             MovieDB.Init();
+            ActorDB.Init();
+            MovieActorDB.Init();
 
             MainPage = new NavigationPage(new Main());
         }

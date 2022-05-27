@@ -21,5 +21,7 @@ namespace MoviesApp.Models
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Producer Producer { get; set; }
 
+        [ManyToMany(typeof(MovieActor), CascadeOperations = CascadeOperation.All)]
+        public ObservableCollection<Actor> Actors { get; set; }
     }
 }

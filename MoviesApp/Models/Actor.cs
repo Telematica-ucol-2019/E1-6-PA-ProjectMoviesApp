@@ -1,6 +1,8 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MoviesApp.Models
@@ -11,9 +13,9 @@ namespace MoviesApp.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string LastName { get; set; }
-        public string MothersLastN { get; set; }
-        public string MoviesPart { get; set; }
+        public string Alias { get; set; }
 
+        [ManyToMany(typeof(MovieActor), CascadeOperations = CascadeOperation.All)]
+        public ObservableCollection<Movie> Movies { get; set; }
     }
 }
