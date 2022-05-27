@@ -21,12 +21,13 @@ namespace MoviesApp.Repositories
 
         public void Init()
         {
+            connection.CreateTable<Actor>();
             AddFromStart("Jochue Benja", "Jamonero");
             AddFromStart("Juempoblo Jamones", "wempo");
             AddFromStart("Mario Alex", "Wiener");
             AddFromStart("Wis Edgardo", "wis");
             AddFromStart("Ivon Jardinez", "CryptoBro");
-            connection.CreateTable<Actor>();
+            
         }
 
 
@@ -36,7 +37,7 @@ namespace MoviesApp.Repositories
 
             if (actor == null)
             {
-                InsertOrUpdate(new Actor() { Name = name, Alias = alias });
+                connection.Insert(new Actor() { Name = name, Alias = alias });
             }
 
         }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:MoviesApp.Models"
              x:Class="MoviesApp.Views.DetailMovie"
              Title="Details movie"
              x:Name="this"
@@ -18,8 +19,33 @@
                 <Label Text="{Binding Producer.Name}" Grid.Row="5" Grid.Column="1"/>
 
             </Grid>
+            <StackLayout>
 
-            <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                <CollectionView ItemsSource="{Binding Actors}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Actor">
+                            <StackLayout>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="Actor Name: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding Name}"/>
+                                            
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Alias: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding Alias}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </StackLayout>
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
                 <!--<Button Text="CANCEL" BackgroundColor="Red" TextColor="White"/>
                 <Button Text="UPDATE" 
                         BackgroundColor="LightSeaGreen" 
