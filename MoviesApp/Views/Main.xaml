@@ -55,7 +55,14 @@
                                                 <Span Grid.Row="2" Grid.Column="3" Text="{Binding Producer.Name}" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </Label>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.cmdDetailMovie, Source={x:Reference this}}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+                                    
                                     <Label Text="M" HorizontalOptions="EndAndExpand" Margin="0,0,15,0">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.cmdModifyMovie, Source={x:Reference this}}"

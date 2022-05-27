@@ -15,12 +15,28 @@ namespace MoviesApp.ViewModel
         public ObservableCollection<Movie> Movies { get; set; }
         public ICommand cmdAddMovie { get; set; }
         public ICommand cmdModifyMovie { get; set; }
+        public ICommand cmdDetailMovie { get; set; }
+
+
+        private Movie movie;
+        public Movie Movie
+        {
+            get { return movie; }
+            set { movie = value; OnPropertyChanged(); }
+        }
+
 
         public MainViewModel()
         {
             Movies = new ObservableCollection<Movie>();
             cmdAddMovie = new Command(() => cmdAddMovieMethod());
             cmdModifyMovie = new Command<Movie>((item) => cmdModifyMovieMethod(item));
+            cmdDetailMovie = new Command<Movie>((item) => cmdDetailMovieMethod(item));
+        }
+
+        private void cmdDetailMovieMethod(Movie movie)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new DetailMovie(movie, this));
         }
 
         private void cmdModifyMovieMethod(Movie movie)

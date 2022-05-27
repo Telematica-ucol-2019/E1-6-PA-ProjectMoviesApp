@@ -17,26 +17,30 @@ namespace MoviesApp.Repositories
             connection = new SQLiteConnection(Constants.Constants.DatabasePath, Constants.Constants.Flags);
             connection.CreateTable<Actor>();
 
-            //AddFromStart("ARNOLDO");
         }
 
         public void Init()
         {
+            AddFromStart("Jochue Benja", "Jamonero");
+            AddFromStart("Juempoblo Jamones", "wempo");
+            AddFromStart("Mario Alex", "Wiener");
+            AddFromStart("Wis Edgardo", "wis");
+            AddFromStart("Ivon Jardinez", "CryptoBro");
             connection.CreateTable<Actor>();
         }
 
 
-        //private void AddFromStart(string name)
-        //{
-        //    Actor actor = GetByName(name);
+        private void AddFromStart(string name, string alias)
+        {
+            Actor actor = GetByName(name);
 
-        //    if (actor == null)
-        //    {
-        //        InsertOrUpdate(new Actor() { Name = name });
-        //    }
+            if (actor == null)
+            {
+                InsertOrUpdate(new Actor() { Name = name, Alias = alias });
+            }
 
-        //}
-            
+        }
+
         public void InsertOrUpdate(Actor actor)
         {
             if (actor.Id == 0)
