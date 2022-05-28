@@ -31,12 +31,16 @@
                                             <Span Grid.Row="0" Grid.Column="1"  Text="Actor Name: " FontAttributes="Bold"/>
                                             <Span Text="{Binding Name}"/>
                                             
-                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Alias: " FontAttributes="Bold"/>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Actor Alias: " FontAttributes="Bold"/>
                                             <Span Text="{Binding Alias}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.cmdDetailActor, Source={x:Reference this}}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
                                 </Label>
-
+                               
                             </StackLayout>
                         </DataTemplate>
 

@@ -37,7 +37,7 @@ namespace MoviesApp.Repositories
 
             if (actor == null)
             {
-                connection.Insert(new Actor() { Name = name, Alias = alias });
+                InsertOrUpdate(new Actor() { Name = name, Alias = alias });
             }
 
         }
@@ -47,7 +47,8 @@ namespace MoviesApp.Repositories
             if (actor.Id == 0)
             {
 
-                connection.Insert(actor);
+                //connection.Insert(actor);
+                connection.InsertWithChildren(actor);
 
             }
             else

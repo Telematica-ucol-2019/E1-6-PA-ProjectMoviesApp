@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MoviesApp.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Class="MoviesApp.Views.DetailActor">
+   <ContentPage.Content>
+        <StackLayout BackgroundColor="White" Margin="10,10" BindingContext="{Binding Actor}" HorizontalOptions="Center">
+            <Grid RowDefinitions="100,100,auto,auto,auto,auto,*,auto" ColumnDefinitions="auto,*">
+                
+                <Label Text="Name" Grid.Row="2" Grid.Column="0"/>
+                <Label Text="{Binding Name}" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Alias" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="{Binding Alias}" Grid.Row="3" Grid.Column="1"/>
+            </Grid>
+            <StackLayout>
+
+
+
+                <CollectionView ItemsSource="{Binding Movies}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Movie">
+                            <StackLayout>
+                                <Image Source="{Binding Coverpage}"
+                                   HeightRequest="70"
+                                   WidthRequest="70"
+                                   Aspect="AspectFit"
+                                   Margin="5,0,0,0"
+                                   />
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="Title: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding Title}"/>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Producer: " FontAttributes="Bold"/>
+                                            <Span Text="{Binding Producer}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                               
+                            </StackLayout>
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                <!--<Button Text="CANCEL" BackgroundColor="Red" TextColor="White"/>
+                <Button Text="UPDATE" 
+                        BackgroundColor="LightSeaGreen" 
+                        TextColor="White"
+                        Command="{Binding BindingContext.cmdSaveMovie, Source={x:Reference this}}"
+                        CommandParameter="{Binding .}"
+                        />-->
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

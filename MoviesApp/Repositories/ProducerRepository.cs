@@ -27,7 +27,7 @@ namespace MoviesApp.Repositories
             if (release.Id == 0)
             {
                 Debug.WriteLine($"Id before register {release.Id}");
-                connection.Insert(release);
+                connection.InsertOrReplace(release);
                 Debug.WriteLine($"Id after register {release.Id}");
             }
             else

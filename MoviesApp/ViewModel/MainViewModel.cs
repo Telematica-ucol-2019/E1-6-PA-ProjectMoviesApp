@@ -16,6 +16,7 @@ namespace MoviesApp.ViewModel
         public ICommand cmdAddMovie { get; set; }
         public ICommand cmdModifyMovie { get; set; }
         public ICommand cmdDetailMovie { get; set; }
+        public ICommand cmdDetailActor { get; set; }
 
 
         private Movie movie;
@@ -25,7 +26,15 @@ namespace MoviesApp.ViewModel
             set { movie = value; OnPropertyChanged(); }
         }
 
+        private Actor actor;
+        public Actor Actor
+        {
+            get { return actor; }
+            set { actor = value; OnPropertyChanged(); }
+        }
+
         public ObservableCollection<Actor> Actors { get; set; }
+        public ObservableCollection<MovieActor> MovieActors { get; set; }
 
 
         public MainViewModel()
@@ -34,6 +43,12 @@ namespace MoviesApp.ViewModel
             cmdAddMovie = new Command(() => cmdAddMovieMethod());
             cmdModifyMovie = new Command<Movie>((item) => cmdModifyMovieMethod(item));
             cmdDetailMovie = new Command<Movie>((item) => cmdDetailMovieMethod(item));
+            cmdDetailActor = new Command<Actor>((item) => cmdDetailActorMethod(item));
+        }
+
+        private void cmdDetailActorMethod(Actor actor)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new DetailActor(actor, this));
         }
 
         private void cmdDetailMovieMethod(Movie movie)
@@ -57,14 +72,22 @@ namespace MoviesApp.ViewModel
                 .RuleFor(c => c.Name, f => f.Company.CompanyName());
 
             Actors = new ObservableCollection<Actor>(App.ActorDB.GetAll());
+            
 
-            movie.Actors = new ObservableCollection<Actor>();
             var RandomNum = Randomizer();
-            movie.Actors.Add(new Actor() { Name = Actors[RandomNum].Name, Alias = Actors[RandomNum].Alias });
-            var RandomNum2 = Randomizer();
-            movie.Actors.Add(new Actor() { Name = Actors[RandomNum2].Name, Alias = Actors[RandomNum2].Alias });
-            var RandomNum3 = Randomizer();
-            movie.Actors.Add(new Actor() { Name = Actors[RandomNum2].Name, Alias = Actors[RandomNum2].Alias });
+            movie.Actors = new ObservableCollection<Actor>();
+            //movie.Actors.Add(new Actor() { Name = Actors[RandomNum].Name, Alias = Actors[RandomNum].Alias });
+
+            //MovieActors = new ObservableCollection<MovieActor>(App.MovieActorDB.GetAll());
+
+
+            movie.Actors.Add(new Faker<Actor>()
+                        .RuleFor(c => c.Name, f => f.Name.FullName())
+                        .RuleFor(c => c.Alias, f => f.Name.LastName()));
+
+            movie.Actors[0].Movies = new ObservableCollection<Movie>();
+            movie.Actors[0].Movies.Add(movie);
+            
             OnPropertyChanged();
             App.Current.MainPage.Navigation.PushAsync(new MaintMovie(movie));
 
@@ -72,8 +95,8 @@ namespace MoviesApp.ViewModel
 
         private int Randomizer()
         {
-            //int totalItemActors = Actors.Count - 1;
-            int totalItemActors = 4;
+            int totalItemActors = Actors.Count - 1;
+            //int totalItemActors = 4;
             Random rnd = new Random();
             int i = rnd.Next(0, 32000) % totalItemActors;
             return i;
