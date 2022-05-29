@@ -27,8 +27,23 @@ namespace MoviesApp.Repositories
         {
             if (movie.Id == 0)
             {
+                //New way
+                App.ProducerDB.InsertOrUpdate(movie.Producer);
+                movie.FKProducerId = movie.Producer.Id;
+                connection.Insert(movie);
 
-                connection.InsertWithChildren(movie);
+                foreach(Actor actor in movie.Actors)
+                {
+                    Console.WriteLine(actor.Movies[0].Title);
+                    var relation = new MovieActor() { FKActorId = actor.Id, FKMovieId = movie.Id };
+                    App.MovieActorDB.InsertOrUpdate(relation);
+                    App.ActorDB.InsertOrUpdate(actor);
+                    var a = relation;
+                }
+
+
+                //OldWay
+                //connection.InsertWithChildren(movie);
 
             }
             else

@@ -10,7 +10,6 @@ namespace MoviesApp.Repositories
 {
     public class MovieActorRepository
     {
-        //Uto josue
         SQLiteConnection connection;
 
         public MovieActorRepository()
@@ -29,7 +28,7 @@ namespace MoviesApp.Repositories
             if (movieActor.Id == 0)
             {
 
-                connection.InsertWithChildren(movieActor);
+                connection.Insert(movieActor);
 
             }
             else

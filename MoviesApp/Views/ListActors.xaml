@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MoviesApp.Models"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Name="this"
+             Title="Actors List"
+             x:Class="MoviesApp.Views.ListActors">
+   <ContentPage.Content>
+            <Grid RowDefinitions="*" ColumnDefinitions="*">
+                <CollectionView ItemsSource="{Binding Actors}" 
+                            BackgroundColor="White"
+                            Margin="5,5"
+                            >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Actor">
+                            <Grid RowDefinitions="80,auto" ColumnDefinitions="auto"  BackgroundColor="WhiteSmoke">
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                    
+                                    <Label HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Grid.Row="0" Grid.Column="0"  Text="Full Name: " FontAttributes="Bold"/>
+                                                <Span Grid.Row="0" Grid.Column="0"  Text="{Binding Name}"/>
+                                                <Span Grid.Row="0" Grid.Column="0" Text="&#10;Alias: " FontAttributes="Bold"/>
+                                                <Span Grid.Row="0" Grid.Column="0" Text="{Binding Alias}" FontSize="Small"  FontAttributes="Italic"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.cmdDetailActor, Source={x:Reference this}}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+                                    
+                                    
+                                </StackLayout>
+
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ContentPage.Content>
+</ContentPage>

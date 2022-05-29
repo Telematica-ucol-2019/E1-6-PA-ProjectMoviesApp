@@ -12,15 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace MoviesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailActor : ContentPage
+    public partial class ListActors : ContentPage
     {
-        public DetailActor(Actor actor, MainViewModel vm)
+        public ListActors(MainViewModel vm)
         {
             InitializeComponent();
-            //Console.WriteLine(actor.Movies[0].Title);
-            vm.Actor = new Actor();
-            vm.Actor = actor;
-            this.BindingContext = vm;
+            vm.GetAllActors();
+            BindingContext = vm;
         }
     }
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MoviesApp.Views.MaintMovie"
-             Title="Update Movie"
+             Title="Detail movies"
              x:Name="this"
              >
     <ContentPage.Content>
@@ -24,8 +24,7 @@
             </Grid>
 
             <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
-                <Button Text="CANCEL" BackgroundColor="Red" TextColor="White"/>
-                <Button Text="UPDATE" 
+                <Button Text="Save" 
                         BackgroundColor="LightSeaGreen" 
                         TextColor="White"
                         Command="{Binding BindingContext.cmdSaveMovie, Source={x:Reference this}}"

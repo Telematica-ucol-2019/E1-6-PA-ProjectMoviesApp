@@ -26,8 +26,13 @@ namespace MoviesApp.Repositories
             AddFromStart("Juempoblo Jamones", "wempo");
             AddFromStart("Mario Alex", "Wiener");
             AddFromStart("Wis Edgardo", "wis");
-            AddFromStart("Ivon Jardinez", "CryptoBro");
-            
+            AddFromStart("Ivon Jardines", "CryptoBro");
+            AddFromStart("Hector Bonifacio", "Arroyero");
+            AddFromStart("Edgar Rojas", "Cupsk");
+            AddFromStart("Silvio Carmona", "Chuyo");
+            AddFromStart("Andrea Almendros", "Andry");
+            AddFromStart("Kevin Ornelas", "Orneli");
+
         }
 
 
@@ -47,8 +52,8 @@ namespace MoviesApp.Repositories
             if (actor.Id == 0)
             {
 
-                //connection.Insert(actor);
-                connection.InsertWithChildren(actor);
+                //connection.InsertWithChildren(actor);
+                connection.Insert(actor);
 
             }
             else
@@ -76,6 +81,16 @@ namespace MoviesApp.Repositories
 
             return connection.GetAllWithChildren<Actor>().ToList();
         }
+
+        //public TableQuery<Actor> GetAllActors(Movie movie)
+        //{
+
+        //    //return connection.GetAllWithChildren<Actor>().ToList();
+        //    var ActorTable = connection.Table<Actor>().Where(m => m.Id == movie.Id);
+        //    return MovieTable;
+
+        //}
+
 
 
         public void DeleteItem(int Id)

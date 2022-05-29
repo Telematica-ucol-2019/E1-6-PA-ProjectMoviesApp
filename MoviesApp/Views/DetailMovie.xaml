@@ -8,19 +8,19 @@
              >
     <ContentPage.Content>
         <StackLayout BackgroundColor="White" Margin="10,10" BindingContext="{Binding Movie}" HorizontalOptions="Center">
-            <Grid RowDefinitions="100,100,auto,auto,auto,auto,*,auto" ColumnDefinitions="auto,*">
-                <Label Text="Cover" Grid.Row="1" Grid.Column="0"/>
-                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Title" Grid.Row="2" Grid.Column="0"/>
+            <Grid RowDefinitions="auto,200,auto,auto,auto,auto,*,auto, auto" ColumnDefinitions="auto,*">
+                <!--<Label Text="Cover" Grid.Row="1" Grid.Column="0"/>-->
+                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Label Text="Title:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
                 <Label Text="{Binding Title}" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Synopsis" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="Synopsis:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
                 <Label Text="{Binding Synopsis}" Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Producer" Grid.Row="4" Grid.Column="0"/>
-                <Label Text="{Binding Producer.Name}" Grid.Row="5" Grid.Column="1"/>
+                <Label Text="Producer:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
+                <Label Text="{Binding Producer.Name}" Grid.Row="4" Grid.Column="1"/>
 
             </Grid>
             <StackLayout>
-
+                <Label Text="Actors Participant" HorizontalOptions="Center" FontAttributes="Bold"/>
                 <CollectionView ItemsSource="{Binding Actors}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Actor">
@@ -32,15 +32,12 @@
                                             <Span Text="{Binding Name}"/>
                                             
                                             <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Actor Alias: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding Alias}"/>
+                                            <Span Text="{Binding Alias}" FontAttributes="Italic"/>
                                         </FormattedString>
                                     </Label.FormattedText>
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.cmdDetailActor, Source={x:Reference this}}"
-                                                              CommandParameter="{Binding .}"/>
-                                    </Label.GestureRecognizers>
+                                    
                                 </Label>
-                               
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
                             </StackLayout>
                         </DataTemplate>
 
@@ -49,15 +46,6 @@
 
             </StackLayout>
 
-                <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
-                <!--<Button Text="CANCEL" BackgroundColor="Red" TextColor="White"/>
-                <Button Text="UPDATE" 
-                        BackgroundColor="LightSeaGreen" 
-                        TextColor="White"
-                        Command="{Binding BindingContext.cmdSaveMovie, Source={x:Reference this}}"
-                        CommandParameter="{Binding .}"
-                        />-->
-            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>
