@@ -77,11 +77,15 @@ namespace MoviesApp.ViewModel
                 .RuleFor(c => c.Title, f => f.Commerce.ProductName())
                 .RuleFor(c => c.Synopsis, f => f.Commerce.ProductDescription());
 
+
             movie.Producer = new Faker<Producer>()
+                .RuleFor(c => c.Logo, f => f.Person.Avatar)
                 .RuleFor(c => c.Name, f => f.Company.CompanyName());
 
-           
-            
+
+
+
+
 
             //var RandomNum = Randomizer();
             movie.Actors = new ObservableCollection<Actor>();

@@ -5,22 +5,27 @@
              x:Class="MoviesApp.Views.DetailMovie"
              Title="Details movie"
              x:Name="this"
+             BackgroundColor="#023B4F"
              >
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Margin="10,10" BindingContext="{Binding Movie}" HorizontalOptions="Center">
+        <StackLayout BackgroundColor="#023B4F" Margin="10,10" BindingContext="{Binding Movie}" HorizontalOptions="Center" >
             <Grid RowDefinitions="auto,200,auto,auto,auto,auto,*,auto, auto" ColumnDefinitions="auto,*">
-                <!--<Label Text="Cover" Grid.Row="1" Grid.Column="0"/>-->
-                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.ColumnSpan="2"/>
-                <Label Text="Title:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
-                <Label Text="{Binding Title}" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Synopsis:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
-                <Label Text="{Binding Synopsis}" Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Producer:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
-                <Label Text="{Binding Producer.Name}" Grid.Row="4" Grid.Column="1"/>
+                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.ColumnSpan="2" />
+                <Label Text="Title:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Label Text="{Binding Title}" Grid.Row="2" Grid.Column="1" TextColor="White"/>
+                <Label Text="Synopsis:" Grid.Row="3" Grid.Column="0" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Label Text="{Binding Synopsis}" Grid.Row="3" Grid.Column="1" TextColor="White"/>
+                <Label Text="Producer:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                    <Image Source="{Binding Producer.Logo}" HorizontalOptions="Start" />
+                    <Label Text="{Binding Producer.Name}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                </StackLayout>
+
+                
 
             </Grid>
             <StackLayout>
-                <Label Text="Actors Participant" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="Actors Participant" HorizontalOptions="Center" FontAttributes="Bold" TextColor=" white"/>
                 <CollectionView ItemsSource="{Binding Actors}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Actor">
@@ -28,16 +33,16 @@
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Grid.Row="0" Grid.Column="1"  Text="Actor Name: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding Name}"/>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="Actor Name: " FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                            <Span Text="{Binding Name}" TextColor="White"/>
                                             
-                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Actor Alias: " FontAttributes="Bold"/>
-                                            <Span Text="{Binding Alias}" FontAttributes="Italic"/>
+                                            <Span Grid.Row="0" Grid.Column="1"  Text="&#10;Actor Alias: " FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                            <Span Text="{Binding Alias}" FontAttributes="Italic" TextColor="White"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                     
                                 </Label>
-                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="#046E8F"/>
                             </StackLayout>
                         </DataTemplate>
 

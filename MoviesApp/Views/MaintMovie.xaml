@@ -4,18 +4,20 @@
              x:Class="MoviesApp.Views.MaintMovie"
              Title="Detail movies"
              x:Name="this"
+             BackgroundColor="#023B4F"
              >
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Margin="10,10" BindingContext="{Binding Movie}" HorizontalOptions="Center">
-            <Grid RowDefinitions="100,100,auto,auto,auto,auto,*,auto" ColumnDefinitions="auto,*">
-                <Label Text="Cover" Grid.Row="1" Grid.Column="0"/>
-                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Title" Grid.Row="2" Grid.Column="0"/>
-                <Entry Text="{Binding Title}" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Synopsis" Grid.Row="3" Grid.Column="0"/>
-                <Entry Text="{Binding Synopsis}" Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Producer" Grid.Row="4" Grid.Column="0"/>
-                <Entry Text="{Binding Producer.Name}" Grid.Row="5" Grid.Column="1"/>
+        <StackLayout BackgroundColor="#023B4F" Margin="10,10" BindingContext="{Binding Movie}" HorizontalOptions="Center">
+            <Grid RowDefinitions="auto,200,auto,auto,auto,auto,*,auto" ColumnDefinitions="auto,*">
+                <Image Source="{Binding Coverpage}" Grid.Row="1" Grid.ColumnSpan="2" />
+                <Label Text="Cover" Grid.Row="2" Grid.Column="0"  FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Entry Text="{Binding Coverpage}" Grid.Row="2" Grid.Column="1" TextColor="White" />
+                <Label Text="Title:" Grid.Row="3" Grid.Column="0"  FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Entry Text="{Binding Title}" Grid.Row="3" Grid.Column="1" TextColor="White" />
+                <Label Text="Synopsis:" Grid.Row="4" Grid.Column="0"  FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Entry Text="{Binding Synopsis}" Grid.Row="4" Grid.Column="1" TextColor="White"/>
+                <Label Text="Producer:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                <Entry Text="{Binding Producer.Name}" Grid.Row="5" Grid.Column="1" TextColor="White"/>
 
 
 
@@ -25,7 +27,7 @@
 
             <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
                 <Button Text="Save" 
-                        BackgroundColor="LightSeaGreen" 
+                        BackgroundColor="#0090C1" 
                         TextColor="White"
                         Command="{Binding BindingContext.cmdSaveMovie, Source={x:Reference this}}"
                         CommandParameter="{Binding .}"

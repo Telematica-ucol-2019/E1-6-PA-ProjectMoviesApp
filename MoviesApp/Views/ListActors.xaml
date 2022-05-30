@@ -5,25 +5,27 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              x:Name="this"
              Title="Actors List"
-             x:Class="MoviesApp.Views.ListActors">
+             x:Class="MoviesApp.Views.ListActors"
+             BackgroundColor="#023B4F"
+             >
    <ContentPage.Content>
             <Grid RowDefinitions="*" ColumnDefinitions="*">
                 <CollectionView ItemsSource="{Binding Actors}" 
-                            BackgroundColor="White"
+                            BackgroundColor="#023B4F"
                             Margin="5,5"
                             >
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Actor">
-                            <Grid RowDefinitions="80,auto" ColumnDefinitions="auto"  BackgroundColor="WhiteSmoke">
+                        <Grid RowDefinitions="80,auto" ColumnDefinitions="auto"  BackgroundColor="#023B4F">
                                 <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
                                     
                                     <Label HorizontalOptions="Center" VerticalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Grid.Row="0" Grid.Column="0"  Text="Full Name: " FontAttributes="Bold"/>
-                                                <Span Grid.Row="0" Grid.Column="0"  Text="{Binding Name}"/>
-                                                <Span Grid.Row="0" Grid.Column="0" Text="&#10;Alias: " FontAttributes="Bold"/>
-                                                <Span Grid.Row="0" Grid.Column="0" Text="{Binding Alias}" FontSize="Small"  FontAttributes="Italic"/>
+                                                <Span Grid.Row="0" Grid.Column="0"  Text="Full Name: " FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                                <Span Grid.Row="0" Grid.Column="0"  Text="{Binding Name}" TextColor="White"/>
+                                                <Span Grid.Row="0" Grid.Column="0" Text="&#10;Alias: " FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                                <Span Grid.Row="0" Grid.Column="0" Text="{Binding Alias}" FontSize="Small"  FontAttributes="Italic" TextColor="White"/>
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -37,7 +39,7 @@
                                     
                                 </StackLayout>
 
-                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="#046E8F"/>
                             </Grid>
 
                         </DataTemplate>

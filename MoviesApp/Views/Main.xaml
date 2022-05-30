@@ -5,7 +5,8 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              x:Class="MoviesApp.Views.Main"
              x:Name="this"
-             >
+             
+             BackgroundColor="#023B4F">
    
     <NavigationPage.TitleView>
             <StackLayout Orientation="Horizontal">
@@ -16,7 +17,7 @@
 
 
             <Button Text="ACTORS" 
-                    BackgroundColor="#69c0ff" 
+                    BackgroundColor="#D7F7FF" 
                     HeightRequest="20" 
                     WidthRequest="70" 
                     FontSize="Micro" 
@@ -24,7 +25,7 @@
                     FontAttributes="Bold" 
                     Command="{Binding BindingContext.cmdListActors, Source={x:Reference this}}" />
 
-            <Button Text="➕" BackgroundColor="#69c0ff" 
+            <Button Text="➕" BackgroundColor="#D7F7FF" 
                     HeightRequest="20" 
                     WidthRequest="35" 
                     FontSize="Micro" 
@@ -40,12 +41,12 @@
         <ContentPage.Content>
             <Grid RowDefinitions="*" ColumnDefinitions="*">
                 <CollectionView ItemsSource="{Binding Movies}" 
-                            BackgroundColor="White"
+                            BackgroundColor="#023B4F"
                             Margin="5,5"
                             >
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Movie">
-                            <Grid RowDefinitions="160,auto" ColumnDefinitions="110., *"  BackgroundColor="WhiteSmoke">
+                        <Grid RowDefinitions="160,auto" ColumnDefinitions="110., *"  BackgroundColor="#023B4F">
                             <Image Source="{Binding Coverpage}"
                                    Grid.Row="0" 
                                     Grid.RowSpan="2" Grid.Column="0"
@@ -60,13 +61,13 @@
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Grid.Row="0" Grid.Column="1"  Text="Title: &#10;" FontAttributes="Bold"/>
-                                                <Span Grid.Row="0" Grid.Column="1"  Text="{Binding Title}"/>
-                                                <Span Grid.Row="1" Grid.Column="2" Text="&#10;Synopsis: &#10;" FontAttributes="Bold"/>
-                                                <Span Grid.Row="1" Grid.Column="2" Text="{Binding Synopsis}" FontSize="Micro" />
+                                                <Span Grid.Row="0" Grid.Column="1"  Text="Title: &#10;" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                                <Span Grid.Row="0" Grid.Column="1"  Text="{Binding Title}" TextColor="White"/>
+                                                <Span Grid.Row="1" Grid.Column="2" Text="&#10;Synopsis: &#10;" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                                <Span Grid.Row="1" Grid.Column="2" Text="{Binding Synopsis}" FontSize="Micro" TextColor="White"/>
                                                 <Span Grid.Row="1" Grid.Column="2" Text="&#10;"/>
-                                                <Span Grid.Row="2" Grid.Column="3" Text="Producer: &#10;" FontAttributes="Bold"/>
-                                                <Span Grid.Row="2" Grid.Column="3" Text="{Binding Producer.Name}" />
+                                                <Span Grid.Row="2" Grid.Column="3" Text="Producer: &#10;" FontAttributes="Bold" TextColor="#3dbbdb"/>
+                                                <Span Grid.Row="2" Grid.Column="3" Text="{Binding Producer.Name}" TextColor="White"/>
                                             </FormattedString>
                                         </Label.FormattedText>
 
@@ -80,7 +81,7 @@
                                     <Button Text="M" 
                                         FontSize="15"
                                         FontAttributes="Bold"
-                                        BackgroundColor="DeepSkyBlue"
+                                        BackgroundColor="#0090C1"
                                         BorderRadius="20"
                                         TextColor="White"
                                         HorizontalOptions="EndAndExpand"
@@ -93,7 +94,7 @@
 
                                 </StackLayout>
 
-                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="LightGray"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1" Color="#046E8F"/>
                             </Grid>
 
                         </DataTemplate>
